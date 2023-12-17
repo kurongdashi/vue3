@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, computed, onUpdated, ref, watch, watchEffect, nextTick } from 'vue'
-import Other from './Other.vue'
 // 创建一个响应变量，可以是任意类型，等同于 useState
 const address = ref('深圳')
 const userInfo = ref({ name: '张三', age: 20 })
@@ -21,7 +20,6 @@ const unWatch = watch(address, async (newVal, oldVal) => {
 watch(
   () => userInfo.value.name,
   async (newVal, oldVal) => {
-    debugger
     if (newVal == '李四') {
       address.value = '北京'
     } else {
@@ -42,7 +40,6 @@ watchEffect(() => {
   }
 })
 const updateInfo = () => {
-  debugger
   console.log(userInfo.value.name)
   if (userInfo.value.name == '张三') {
     userInfo.value.name = '李四'
@@ -73,23 +70,16 @@ const sum = computed(() => {
 
 <template>
   <header>
-    <Other
-      :title="address"
-      :address-list="addressList"
-      @province-change="updateInfo"
-      @on-click="onClickOther"
-    >
-      <!-- 路由容器routerView -->
-      <p class="info">
-        <span>姓名：{{ userInfo.name }}</span>
-        <span>年龄：{{ userInfo.age }}</span>
-        <span>地址：{{ address }}</span>
-        <span>总数：{{ sum }}</span>
-      </p>
-      <!-- 模板中会自动拆包不需要写完.value -->
-      <p><input type="text" v-model="userInfo.name" ref="input" /></p>
-      <button @click="updateInfo">修改用户信息</button>
-    </Other>
+    <!-- 路由容器routerView -->
+    <p class="info">
+      <span>姓名：{{ userInfo.name }}</span>
+      <span>年龄：{{ userInfo.age }}</span>
+      <span>地址：{{ address }}</span>
+      <span>总数：{{ sum }}</span>
+    </p>
+    <!-- 模板中会自动拆包不需要写完.value -->
+    <p><input type="text" v-model="userInfo.name" ref="input" /></p>
+    <button @click="updateInfo">修改用户信息</button>
   </header>
 </template>
 <style scoped>

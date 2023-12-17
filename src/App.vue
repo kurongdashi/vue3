@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { routerList } from '@/router'
-
+import { Suspense } from 'vue'
+import MyTransition from '@/components/MyTransition.vue'
 onMounted(() => {
   console.log('组件初始化了onMounted')
 })
@@ -12,12 +13,22 @@ onMounted(() => {
   <header class="header">系统后台</header>
   <div class="app-wrapper">
     <nav class="nav">
-      <p v-for="route in routerList">
+      <p v-for="route in routerList" :key="route.path">
         <RouterLink :to="route.path">{{ route.name }}</RouterLink>
       </p>
     </nav>
     <div class="wrapper">
-      <RouterView />
+      <!-- <RouterView /> -->
+      <RouterView v-slot="{ Component }">
+        <template v-if="Component">
+          <KeepAlive>
+            <Suspense>
+              <template #fallback>加载中...</template>
+              <component :is="Component" />
+            </Suspense>
+          </KeepAlive>
+        </template>
+      </RouterView>
     </div>
   </div>
 </template>
@@ -34,6 +45,7 @@ onMounted(() => {
 .app-wrapper {
   display: flex;
   height: calc(100% - 80px);
+  overflow-y: auto;
   .nav {
     width: 240px;
     border-right: 1px solid #ccc;

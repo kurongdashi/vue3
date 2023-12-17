@@ -16,7 +16,6 @@ const inputChange = (e: any) => {
   if (props.titleModifiers.uppercase) {
     value = value?.toUpperCase()
   }
-  debugger
   emit('update:title', value)
 }
 const toggleFocus = () => {

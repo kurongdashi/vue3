@@ -12,7 +12,7 @@ const emit = defineEmits(['province-change', 'onClick'])
     {{ props.title }}
     <!--方法2、 在模板中直接使用$emit -->
     <select class="select" @change="$emit('province-change')">
-      <option :value="address.value" v-for="address in props.addressList">
+      <option :value="address.value" v-for="address in props.addressList" :key="address.label">
         {{ address.label }}
       </option>
     </select>
