@@ -27,6 +27,12 @@ const routerList = [
     name: 'vue的内置组件',
     // vue路由懒加载
     component: () => import('./About4.vue')
+  },
+  {
+    path: '/about5',
+    name: 'vue的原理',
+    // vue路由懒加载
+    component: () => import('./About5.vue')
   }
 ]
 export default routerList
