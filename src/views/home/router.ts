@@ -5,7 +5,7 @@ const routerList = [
     component: () => import('./Home.vue')
   },
   {
-    path: '/about',
+    path: '/about/:id',
     name: '深入Vue组件',
     // vue路由懒加载
     component: () => import('./About.vue')
@@ -33,6 +33,12 @@ const routerList = [
     name: 'vue的原理',
     // vue路由懒加载
     component: () => import('./About5.vue')
+  },
+  {
+    path: '/about6',
+    name: 'js考点',
+    // vue路由懒加载
+    component: () => import('./About6.vue')
   }
 ]
 export default routerList

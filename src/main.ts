@@ -6,6 +6,8 @@ import App from './App.vue'
 import router from './router'
 import './assets/main.css'
 import myPlugin from './myPlugin'
+import './es'
+import './test'
 /**
  * SSR 即服务端渲染，在对首屏加载有要求的时候，并且是静态页面时
  */

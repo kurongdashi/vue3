@@ -3,12 +3,26 @@ import Input from '@/components/Input.vue'
 import Button from '@/components/Button.vue'
 import MySubTitle from '@/components/MySubTitle.vue'
 import UpcaseInput from '@/components/UpcaseInput.vue'
-import { ref, watch, watchEffect } from 'vue'
+import { onMounted, onUnmounted, onUpdated, ref, watch, watchEffect } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useCounterStore } from '@/stores/counter'
 const message = ref('hello')
 const message2 = ref('hello2')
 const counter = useCounterStore()
+const route = useRoute()
+onMounted(() => {
+  console.log('route.state=', route.state)
+  console.log('route.query=', route.query)
+  console.log('route.params=', route.params)
+})
+// 被keep-alive缓存的组件，下次进入只调用onupdated
+onUpdated(() => {
+  console.log('onUpdated route=', route)
+})
+onUnmounted(() => {
+  console.log('onUnmounted route=', route)
+})
 // 可以通过 storeToRefs 保持响应，直接结构将失去响应
 const { count, doubleCount } = storeToRefs(counter)
 </script>

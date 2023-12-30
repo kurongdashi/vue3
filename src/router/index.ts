@@ -1,9 +1,21 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  createMemoryHistory,
+  createWebHashHistory
+} from 'vue-router'
 import HomeRouter from '@/views/home/router'
-export const routerList = [...HomeRouter]
+export const routerList = [
+  ...HomeRouter,
+  {
+    name: 'NotFound',
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/other/Other.vue')
+  }
+]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/'),
   routes: routerList
 })
 

@@ -11,3 +11,4 @@
 [vue-router](https://router.vuejs.org/zh/)
 [vite](https://cn.vitejs.dev/guide/why.html)
 [pinia](https://pinia.vuejs.org/zh/core-concepts/)
+[ts文档](https://typescript.p6p.net/typescript-tutorial/intro.html)
