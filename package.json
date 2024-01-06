@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "my-components/index.js",
   "scripts": {
     "dev": "vite",
-    "lib": "vite build  --out-dir my-components --ssr src/index.js",
-    "push": "node script && yarn lib && git add . && git commit -m 'commit' && git push",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "yarn add vue-components && run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
@@ -16,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "vue-components": "git+https://github.com/kurongdashi/vue-components.git",
     "less": "^4.2.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.10",

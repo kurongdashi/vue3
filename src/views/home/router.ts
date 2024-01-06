@@ -39,6 +39,12 @@ const routerList = [
     name: 'js考点',
     // vue路由懒加载
     component: () => import('./About6.vue')
+  },
+  {
+    path: '/about7',
+    name: '远程公共组件库使用',
+    // vue路由懒加载
+    component: () => import('./About7.vue')
   }
 ]
 export default routerList
