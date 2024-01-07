@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "npm install vue-components",
     "dev": "vite",
-    "build": "yarn add vue-components && run-p type-check \"build-only {@}\" --",
+    "build": "npm install vue-components && run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
@@ -13,10 +14,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue-components": "git+https://github.com/kurongdashi/vue-components.git",
     "less": "^4.2.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.10",
+    "vue-components": "github:kurongdashi/vue-components",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

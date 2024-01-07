@@ -305,3 +305,27 @@ enum Color2 {
 console.log('Color1=', Color1)
 console.log('enum 可以通过值获取成员名称=', Color1[0])
 console.log('Color2=', Color2)
+
+const arr1 = [
+  { id: 3, parent: 2 },
+  { id: 2, parent: 1 },
+  { id: 5, parent: 2 },
+  { id: 6, parent: 2 },
+  { id: 4, parent: 3 },
+  { id: 1, parent: null }
+]
+console.log('arr1=', arr1)
+let treeObj = null
+arr1.forEach((item) => {
+  if (item.parent) {
+    // 找父级
+    const obj: any = arr1.find((item1) => item1.id == item.parent)
+    if (!obj.children) {
+      obj.children = []
+    }
+    obj.children.push(item)
+  } else {
+    treeObj = item
+  }
+})
+console.log('treeObj=', treeObj)
