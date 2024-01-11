@@ -7,8 +7,10 @@ import { onMounted, onUnmounted, onUpdated, ref, watch, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useCounterStore } from '@/stores/counter'
+// import { Button as EleBtn } from 'element-plus'
 const message = ref('hello')
 const message2 = ref('hello2')
+const date = ref('')
 const counter = useCounterStore()
 const route = useRoute()
 onMounted(() => {
@@ -33,6 +35,10 @@ const { count, doubleCount } = storeToRefs(counter)
       <div>
         store中的count:{{ count }},doubleCount:{{ doubleCount }}
         <Button @on-click="() => counter.increment()">count+=</Button>
+        <div>
+          <el-button type="warning">饿了么</el-button>
+          <el-date-picker v-model="date"></el-date-picker>
+        </div>
       </div>
     </MySubTitle>
     <MySubTitle title="组件全局注册">

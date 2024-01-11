@@ -20,6 +20,7 @@ const jieliu = (fn, delay) => {
     const newTime = Date.now()
     if (newTime - lastTime > delay) {
       // 只有上一次时间间隔超过设置时间，才执行fn()
+      console.log('普通函数没有this，所以指向外层对象Vue', this)
       fn.apply(this, args)
       lastTime = newTime
     }

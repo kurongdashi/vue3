@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Button } from 'vue-components'
+// import { Button } from 'vue-components'
+// import '@/node_modules/vue-components/dist/index.css'
 </script>
 <template>
   <div>

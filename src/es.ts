@@ -1,7 +1,11 @@
+import * as library from '../lib/library.js'
+
 // es6 说明
 function Console(str) {
   console.log(`================${str}=====================`)
 }
+console.log('测试library打包效果', library, library.add(1, 3, 4, 5))
+
 // 1、Proxy和Reflect 是影子对象且都是 Object 升级对象
 let userInfo = {
   name: '张三',

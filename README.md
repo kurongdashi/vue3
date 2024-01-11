@@ -66,6 +66,24 @@ vite是按需加载所以不建议编译时进行eslint检查，而是单独配�
 4、web storage 缓存 sessionStorage localStorage
 ```
 
+### element-plus
+
+- 完整导入
+
+```
+// 完整导入
+import ElementPlus from 'element-plus'
+// 完整导入使用
+app.use(ElementPlus)
+```
+
+- 按需导入
+
+```
+安装插件
+
+```
+
 ### vite 静态资源处理
 
 - 定义静态资源类型在 ts 中，创建.d.ts 文件

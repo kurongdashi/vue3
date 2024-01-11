@@ -6,7 +6,14 @@ import App from './App.vue'
 import router from './router'
 import './assets/main.css'
 import myPlugin from './myPlugin'
+// 完整导入
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import zhCN from 'element-plus/dist/locale/zh-cn.min.js'
+// element date 组件中文需要dayjs
+// import 'dayjs/locale/zhzh-cn.min.js'
 import './es'
+import './es5'
 import './test'
 /**
  * SSR 即服务端渲染，在对首屏加载有要求的时候，并且是静态页面时
@@ -18,6 +25,10 @@ import './test'
 
 // 创建应用 createApp().mount('#app')
 const app = createApp(App)
+// 完整导入使用
+app.use(ElementPlus, {
+  locale: zhCN
+})
 // 全局注册，减少使用，1、打包会打入不管是否被使用，2、父子关联性无法体现
 app.component('MyTitle', Title)
 // use(createPinia) 使用全局store 0pinia

@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { routerList } from '@/router'
 import { Suspense } from 'vue'
-import MyTransition from '@/components/MyTransition.vue'
 onMounted(() => {
   console.log('组件初始化了onMounted')
 })
