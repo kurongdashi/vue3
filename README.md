@@ -1,5 +1,37 @@
 # vue3
 
+```
+Vue和React 的相同与不同
+相同：都使用虚拟dom，近乎相同的diff算法
+不同：
+1、核心思想不同，vue走简单template模板方式，React走hooks 函数式
+2、组件实现方式不同，vue组件是一个options配置对象，react 通过render生产vnode
+3 、响应式处理方式不同，vue通过proxy自动跟踪，React必须通过setState
+
+4、事件机制不同，父子组件通讯方式不同：
+vue采用原生web事件，vue通过emit，on注册监听
+react将原生事件包装，冒泡到document，然后下发，通过props回调函数方式
+
+5、diff 算法不同：
+vue采用双向链表（线性）来保存节点，遍历链表并使用哈希表（:key）来快速定位节点，找到节点并跟新，比React 深度遍历更高效
+let arr=[
+  {prev:null,key:'1',next:arr[1]},
+  {prev:arr[0],key:'2',next:arr[2]},
+  ...
+]
+双向链表没有层级结构，是线性的
+
+react 当状态或属性变化时，重新创建虚拟dom并通过深度遍历节点tree（从树根节点一层一层往下）找出不同节点进行（删除、新增）
+```
+
+### 双向链表
+
+```
+双向链表：每个节点对象都有prev和next两个属性，（就是当前节点可以通过prev属性找到上一个节点，通过next属性找到下一个节点）
+如果一个元素被移除了，然后重新添加了并且数据和之前一样，
+那么vue只会复用之前的元素，因为双向链表记住了元素
+```
+
 ## SSR [文档](https://cn.vuejs.org/guide/scaling-up/ssr.html#what-is-ssr)
 
 ```
@@ -61,9 +93,16 @@ vite是按需加载所以不建议编译时进行eslint检查，而是单独配�
 ```
 按优先级排序如下：
 1、serveice worker 是一种js拦截脚本，拦截请求并返回缓存内容（拦截优先级最高）
-2、强缓存 cache-control 和expires 响应头实现，让浏览器从本地缓存中读取资源不发起请求
-3、协商缓存 last-modified 和 eTag 响应头，发起请求如果服务器返回304，则直接使用本地资源
-4、web storage 缓存 sessionStorage localStorage
+2、强缓存
+浏览器返回响应头
+expires: Date()（资源到期时间很早版本，需要本地和服务时间相同，所以后期http1.1引入了cache-control）
+cache-control：max-age=1000 (多少时间内有效单位秒) 和 响应头实现，让浏览器从本地缓存中读取资源不发起请求
+3、协商缓存浏览器返回响应头
+last-modified（资源最后更新时间）
+eTag（服务器生成的哈希字符串表示文件内容是否变化） 响应头，发起请求如果服务器返回304，则直接使用本地资源
+4、web storage
+sessionStorage当前页面有效，关闭页面或浏览器失效 5M大小
+缓存  localStorage 5M大小
 ```
 
 ### element-plus

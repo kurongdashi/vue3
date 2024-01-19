@@ -16,14 +16,24 @@ function Person(name = '') {
 Person.prototype = { a: '11' }
 // js规定每个函数都有prototype，只有在创建对象时才有用，用于共享属性
 Person.prototype.eat = function (food) {
-  console.log('正在吃:' + food)
+  console.log(this.name + '正在吃:' + food)
 }
-
+function Zhang(name) {
+  // this.name = name
+  this.study = function (str) {
+    console.log(this.name + '正在学习:' + str)
+  }
+}
 // Person('使用')
 const my = new Person('老王')
 my.eat()
 // 输出my只会显示my自身属性，但实际上可以调用my继承的属性
 console.log('my:', my, JSON.stringify(my))
+Zhang.prototype = my
+const zhang = new Zhang('zhang')
+console.log('zhang:', zhang, JSON.stringify(zhang))
+zhang.eat('牛肉')
+zhang.study('english')
 
 // 3、prototype.constructor 属性，原型对象的构造函数是谁，由于原型对象可以被实例继承，所以实例上也可以访问constructor
 console.log(

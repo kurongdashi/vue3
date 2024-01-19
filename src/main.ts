@@ -14,7 +14,6 @@ import zhCN from 'element-plus/dist/locale/zh-cn.min.js'
 // import 'dayjs/locale/zhzh-cn.min.js'
 import './es'
 import './es5'
-import './test'
 /**
  * SSR 即服务端渲染，在对首屏加载有要求的时候，并且是静态页面时
  */
@@ -22,6 +21,9 @@ import './test'
 // renderToString(app1).then((res) => {
 //   console.log(res)
 // })
+// 使用自定义的变量，在env.d.ts中声明，在vite.config.ts中define
+console.log('__API__=', __API__)
+console.log('import.meta.env=', import.meta.env)
 
 // 创建应用 createApp().mount('#app')
 const app = createApp(App)

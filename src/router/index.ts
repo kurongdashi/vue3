@@ -1,9 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-  createMemoryHistory,
-  createWebHashHistory
-} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeRouter from '@/views/home/router'
 export const routerList = [
   ...HomeRouter,
