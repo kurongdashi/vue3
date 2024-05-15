@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 const focus = ref(false)
 // 1、自定义组件在外部使用时会把class、id、style的没声明的属性透传到子组件内部
 const emit = defineEmits(['onClick'])
@@ -8,9 +8,13 @@ const click = () => {
   focus.value = !focus.value
   emit('onClick')
 }
+const info = inject('userInfo', { name: '默认' })
+console.log('inject 获取info', info)
 </script>
 <template>
   <button class="btn" @click="click">
+    <!-- 在子组件内部能通过inject()获取父组件注入的内容 -->
+    {{ info.name }}
     <slot>按钮</slot>
   </button>
 </template>

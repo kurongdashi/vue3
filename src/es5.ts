@@ -60,3 +60,32 @@ function _new(constructor, ...args) {
 const zhangsan = _new(Person, '张三')
 console.log('zhangsan:', zhangsan)
 zhangsan.eat('米饭')
+// flat() 拉平多层 没有参数默认为1，有参数表示拉平多层
+console.log(
+  'flat应用',
+  [
+    [1, 3],
+    [2, [3, [4]]]
+  ].flat(3)
+)
+// 最简单的换位置操作 [x,y]=[y,x] 结构
+
+// Object.entries() 从对象到二维数组
+console.log('Object.entries应用', Object.entries({ a: 1, b: 2 }))
+// Object.fromEntries() 从二维数组到对象
+console.log(
+  'Object.fromEntries应用',
+  Object.fromEntries([
+    ['x', 1],
+    ['y', 2]
+  ])
+)
+// set 是类数组对象 weakSet 区别：值只能是对象或symbol，并且在没有后续使用这个对象时被垃圾回收节省内存
+const set1 = new Set([1, 2, 3, 3, 3, 5])
+console.log('set应用', set1, [...set1])
+// map是二维数组结构,weakSet 区别：值只能是对象或symbol，并且在没有后续使用这个对象时被垃圾回收节省内存
+const map1 = new Map([
+  ['a', 1],
+  ['b', 2]
+])
+console.log('map应用', map1, [...map1])

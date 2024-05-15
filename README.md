@@ -1,6 +1,8 @@
 # vue3
 
 ```
+v-if 是不渲染元素，v-show是渲染元素但修改display:none 元素在文档流中不显示，触发重流
+visibility:hidden 是元素隐藏，还在文档流中，触发重绘
 Vue和React 的相同与不同
 相同：都使用虚拟dom，近乎相同的diff算法
 不同：
@@ -80,9 +82,9 @@ react 当状态或属性变化时，重新创建虚拟dom并通过深度遍历�
 ## vite 的优势
 
 ```
-vite 将模块分成依赖+源码 分开加载
-依赖：将使用esbuild（Go语言编写比js快） 预构建
-源码：使用懒加载 + es6的导入方式交给浏览器去解析 + http缓存加载
+vite 将模块分成依赖（大型不会变动的存js库文件）+源码(jsx,ts,vue等需要转换的文件) 分开加载
+依赖：将使用esbuild（Go语言编写比js快10-100倍）预构建
+源码：es6的导入方式交给浏览器去解析 + http缓存加载（源码是通过last-modified协商缓存处理，依赖因为不变所以是cache-control:max-age=xx,进行强缓存），目的让浏览器分担更多任务
 
 vite是按需加载所以不建议编译时进行eslint检查，而是单独配置一条命令
 

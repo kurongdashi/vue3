@@ -14,6 +14,8 @@ import zhCN from 'element-plus/dist/locale/zh-cn.min.js'
 // import 'dayjs/locale/zhzh-cn.min.js'
 import './es'
 import './es5'
+import './core'
+import './microUse'
 /**
  * SSR 即服务端渲染，在对首屏加载有要求的时候，并且是静态页面时
  */

@@ -9,11 +9,13 @@ onRenderTracked(() => {
 onRenderTriggered(() => {
   debugger
 })
+const vNode = h('div', { id: 'hello' }, ['world', h('span')])
 </script>
 <template>
   <div class="about">
     <MyTitle title="Vue的内部原谅"></MyTitle>
     <MySubTitle title="Vue的安全性">
+      {{ vNode }}
       <div>1、html内容通过dom.textContent 属性获取dom内容,会自动将js 代码转义</div>
       <div>2、attribute内容通过setAttribute()</div>
     </MySubTitle>

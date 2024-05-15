@@ -14,6 +14,6 @@ export const useCounterStore = defineStore('counter', () => {
     console.log('count.value===', count.value)
     count.value--
   }
-
+  // 定义变量，和对应的修改方法，类似useState
   return { count, doubleCount, increment, subcount }
 })

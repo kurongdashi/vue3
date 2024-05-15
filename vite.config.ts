@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // 提供vue3单文件支持
 import vue from '@vitejs/plugin-vue'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { name } from './package.json'
 // 通过 process.env.NODE_ENV获取当前打包环境,在window 系统中 set NODE_ENV=xx vite build
 console.log('env=', process.env.NODE_ENV)
 // https://vitejs.dev/config/
@@ -21,7 +22,7 @@ export default defineConfig({
     // assetsInlineLimit: 2 * 1024, //资源限制小于此值则内联到代码里
     // chunkSizeWarningLimit: 5 * 1024,
     // cssCodeSplit: false, //禁用则会单独提取css到 style.css
-    minify: 'esbuild', //terser压缩代码但是打包没有esbuild 模式快，默认为esbuild
+    // minify: 'esbuild', //terser压缩代码但是打包没有esbuild 模式快，默认为esbuild
     sourcemap: false,
     rollupOptions: {
       // external: ['vue'],
